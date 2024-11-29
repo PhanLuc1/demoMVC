@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tìm kiếm thông tin tốt nghiệp và việc làm</title>
+</head>
+<body>
+<h1>Tìm kiếm thông tin tốt nghiệp và việc làm</h1>
+<form th:action="@{/totnghiep/search}" method="get">
+    <label for="keyword">Từ khóa (Tên, CMND):</label>
+    <input type="text" id="keyword" name="keyword" />
+    <button type="submit">Tìm kiếm</button>
+</form>
+
+<h2>Kết quả tìm kiếm</h2>
+<table border="1" th:if="${resultList}">
+    <thead>
+    <tr>
+        <th>Số CMND</th>
+        <th>Họ Tên</th>
+        <th>Mã Ngành (Tốt nghiệp)</th>
+        <th>Mã Trường (Tốt nghiệp)</th>
+        <th>Mã Ngành (Công ty)</th>
+        <th>Tên Công Ty</th>
+        <th>Thời Gian Làm Việc</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="result : ${resultList}">
+        <td th:text="${result.soCMND}"></td>
+        <td th:text="${result.hoTen}"></td>
+        <td th:text="${result.maNganhTotNghiep}"></td>
+        <td th:text="${result.maTruongTotNghiep}"></td>
+        <td th:text="${result.maNganhCongTy}"></td>
+        <td th:text="${result.tenCongTy}"></td>
+        <td th:text="${result.thoiGianLamViec}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

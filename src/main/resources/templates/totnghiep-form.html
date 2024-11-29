@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Thêm thông tin tốt nghiệp</title>
+</head>
+<body>
+<h1>Thêm thông tin tốt nghiệp</h1>
+<form th:action="@{/totnghiep/save}" th:object="${totNghiep}" method="post">
+    <label for="soCMND">Sinh viên:</label>
+    <select id="soCMND" name="soCMND" th:field="*{soCMND}">
+        <option th:each="sinhVien : ${sinhVienList}" th:value="${sinhVien.soCMND}" th:text="${sinhVien.hoTen}"></option>
+    </select>
+    <br/>
+
+    <label for="maTruong">Trường:</label>
+    <select id="maTruong" name="maTruong" th:field="*{maTruong}">
+        <option th:each="truong : ${truongList}" th:value="${truong.maTruong}" th:text="${truong.tenTruong}"></option>
+    </select>
+    <br/>
+
+    <label for="maNganh">Ngành:</label>
+    <select id="maNganh" name="maNganh" th:field="*{maNganh}">
+        <option th:each="nganh : ${nganhList}" th:value="${nganh.maNganh}" th:text="${nganh.tenNganh}"></option>
+    </select>
+    <br/>
+
+    <label for="ngayTN">Ngày tốt nghiệp:</label>
+    <input id="ngayTN" type="text" name="ngayTN" th:field="*{ngayTN}" />
+    <br/>
+
+    <label for="heTN">Hệ tốt nghiệp:</label>
+    <input id="heTN" type="text" name="heTN" th:field="*{heTN}" />
+    <br/>
+
+    <label for="loaiTN">Loại tốt nghiệp:</label>
+    <input id="loaiTN" type="text" name="loaiTN" th:field="*{loaiTN}" />
+    <br/>
+
+    <button type="submit">Lưu</button>
+</form>
+</body>
+</html>
